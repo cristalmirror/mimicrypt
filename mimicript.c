@@ -8,7 +8,9 @@
 
 int main(){
 
-    
+    time_t key;                                                               
+                                                                                
+      key=time(NULL);//load the number of seconds of the data and using like key for encrypt archive 
       
       return 0;
       
