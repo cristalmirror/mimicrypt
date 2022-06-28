@@ -15,6 +15,8 @@ int main(int argc,char *argv[]){
       time date=time(NULL),aux_date;
       FILE *d_text= NULL;
 
+      create_list(&data_e);
+
       //save the public key based in the time
       date=aux_date;
 
@@ -46,10 +48,14 @@ int rand_num(time x_n){
 
 	    result=result/10000000;
 
+
 	    //test that are in range ASCII
-	    if((result<=255)&&(result>-1)){
+	    if((result<=255)&&(result>-1)&&(result!=data_e->num)){
 
 		  Opc=false;
+
+		  load_data(&data_e,result);
+
 		  return result;
 
 	    }else{

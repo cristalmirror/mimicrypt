@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<stdbool.h>
 
+//register that contend the numbers created of rand funcion
 struct list_num{
 
       int num;
@@ -9,10 +9,47 @@ struct list_num{
       
 };
 
-void create_list(struct list_num *data1);
+struct list_num data_e;
 
+//creation of the list of numbers
+void create_list(struct list_num *data1);
+//load numbers that the RGN
+void load_data(struct list_num data1,int n_num);
+
+
+
+//creation of the list of numbers
 void create_list(struct list_num *data1){
 
       *date=NULL;
       
 }
+
+//load numbers that the RGN
+void load_data(struct list_num *data1,int n_num){
+      struct list_num *aux;
+      struct list_num *nue=(struct list_num*) malloc(sizeof(struct list_num));
+
+      
+      nue->num=n_num;
+      nue->sig=NULL;
+
+      
+      //test the state of de later node of the list
+      if(data1==NULL){
+	    data1=nue;
+ 
+      }else{
+
+	    aux=data1;
+	    while (aux->sig!=NULL) {
+
+		  aux=aux->sig;
+		  
+	    }
+	    aux-sig=nue;
+      }
+
+}
+
+
