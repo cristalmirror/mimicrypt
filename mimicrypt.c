@@ -8,6 +8,9 @@
 //create a aleatory numbers for each letter in the text
 int rand_num(time x_n);
 
+//creat a encrypt  archive
+void encrypt_operation(FILE *archive_inp,FILE *archive_otp);
+
 //main program
 int main(int argc,char *argv[]){
       //defines of constants an variable
@@ -52,17 +55,23 @@ int rand_num(time x_n){
 	    //test that are in range ASCII
 	    if((result<=255)&&(result>-1)&&(result!=data_e->num)){
 
-		  Opc=false;
+			Opc=false;
 
-		  load_data(&data_e,result);
+			load_data(&data_e,result);
 
-		  return result;
+			return result;
 
 	    }else{
 
-		  opc=true;
+			opc=true;
 		  
 	    }
       }
      
+}
+
+
+
+void encrypt_operation(FILE *archive_inp,FILE *archive_otp){
+	
 }
