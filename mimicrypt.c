@@ -66,6 +66,13 @@ int rand_num(time x_n){
 			opc=true;
 		  
 	    }
+	    
+	    //if RNG create two identical numbers, change x_n in the RNG 
+	    if(result==data_e->num){
+
+	      x_n++;
+
+	    }
       }
      
 }
