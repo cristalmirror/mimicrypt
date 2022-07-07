@@ -5,18 +5,24 @@
 #include <stdbool.h>
 #include "list_num_used.h"
 
+//define constant
+
+#define _CONSTANT 1
+
+
 //create a aleatory numbers for each letter in the text
 int rand_num(time x_n);
 
 //creat a encrypt  archive
-void encrypt_operation(FILE *archive_inp,FILE *archive_otp);
+void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i);
 
 //main program
 int main(int argc,char *argv[]){
       //defines of constants an variable
-      int res,cont;
+      int res,cont=0;
       time date=time(NULL),aux_date;
-      FILE *d_text= NULL;
+      FILE *d_text= NULL,encrypt_archive;
+      
 
       create_list(&data_e);
 
@@ -27,13 +33,15 @@ int main(int argc,char *argv[]){
       d_text=fopen(*argv,"a");
 
       //create the algorithm that will generete the aleatory numbers
-      while(1==feof(tam)){
+      while(_CONSTANT==feof(tam)){
 
             //create a aleatory numbers for each letter in the text
             res=rand_num(date,d_text);
 
-	    
-      }
+            encrypt_operation(d_text,&encrypt_archive,cont);
+
+            cont++;
+       }
       
       return 0;
 }
@@ -78,7 +86,18 @@ int rand_num(time x_n){
 }
 
 
+//encrypt de archive 
+void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i){
+      char aux;
+      return_number_of_the_list(&data_e,i);
 
-void encrypt_operation(FILE *archive_inp,FILE *archive_otp){
+      FILE *archive_otp = fopen(argv,"a");
 
+      aux=(char) data_e->num;
+
+      
+
+      
+      
+      
 }

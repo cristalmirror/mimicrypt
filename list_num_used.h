@@ -44,13 +44,13 @@ void load_data(struct list_num *data1,int n_num){
  
       }else{
 
-	    aux=data1;
-	    while (aux->sig!=NULL) {
+            aux=data1;
+            while (aux->sig!=NULL) {
 
-			aux=aux->sig;
+                  aux=aux->sig;
 		  
-	    }
-	    aux-sig=nue;
+            }
+            aux-sig=nue;
       }
 
 }
@@ -66,17 +66,17 @@ int return_number_of_the_list(struct list_num *data1,int pstn){
 
 	do{
 		
-		if(cont==pstn){
+          if(cont==pstn){
 				  
-			return aux->num;
+                return aux->num;
 			
-		}else{
+          }else{
 			
-			aux=aux->*sig
-			
-		}
+                aux=aux->*sig
+
+          }
 		
-		cont++;
+          cont++;
 	}while(cont!=pstn);
 	
 	
