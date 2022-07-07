@@ -29,8 +29,8 @@ int main(int argc,char *argv[]){
       //create the algorithm that will generete the aleatory numbers
       while(1==feof(tam)){
 
-	    //create a aleatory numbers for each letter in the text
-	    res=rand_num(date,d_text);
+            //create a aleatory numbers for each letter in the text
+            res=rand_num(date,d_text);
 
 	    
       }
@@ -46,33 +46,33 @@ int rand_num(time x_n){
 
       //generate numbers that overcome the 255 
       while(opc){
-	    result=(a*(x_n)+c)%m;//generator of aletory numbers
-	    x_n=result;
+            result=(a*(x_n)+c)%m;//generator of aletory numbers
+            x_n=result;
 
-	    result=result/10000000;
+            result=result/10000000;
 
 
 	    //test that are in range ASCII
-	    if((result<=255)&&(result>-1)&&(result!=data_e->num)){
+            if((result<=255)&&(result>-1)&&(result!=data_e->num)){
 
-			Opc=false;
+                  opc=false;
+                  
+                  load_data(&data_e,result);
+              
+                  return result;
 
-			load_data(&data_e,result);
+            }else{
 
-			return result;
-
-	    }else{
-
-			opc=true;
+                  opc=true;
 		  
-	    }
+            }
 	    
 	    //if RNG create two identical numbers, change x_n in the RNG 
-	    if(result==data_e->num){
+            if(result==data_e->num){
 
-	      x_n++;
+                  x_n++;
 
-	    }
+            }
       }
      
 }
@@ -80,5 +80,5 @@ int rand_num(time x_n){
 
 
 void encrypt_operation(FILE *archive_inp,FILE *archive_otp){
-	
+
 }
