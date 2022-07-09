@@ -2,35 +2,35 @@
 #include<stdlib.h>
 
 //register that contend the numbers created of rand funcion
-struct list_num{
+typedef struct list_num{
 
       int num;
       struct list_num *sig;
       
-};
+}data_e;
 
-struct list_num data_e;
+typedef data_e *lnum;
 
 //creation of the list of numbers
-void create_list(struct list_num *data1);
+void create_list(lnum *data1);
 
 //load numbers that the RGN
-void load_data(struct list_num data1,int n_num);
+void load_data(lnum *data1,int n_num);
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(struct list_num *data1,int pstn);
+int return_number_of_the_list(lnum *data1,int pstn);
 
 //creation of the list of numbers
-void create_list(struct list_num *data1){
+void create_list(lnum *data1){
 
-      *date=NULL;
+      *data1=NULL;
       
 }
 
 //load numbers that the RGN
-void load_data(struct list_num *data1,int n_num){
-      struct list_num *aux;
-      struct list_num *nue=(struct list_num*) malloc(sizeof(struct list_num));
+void load_data(lnum *data1,int n_num){
+      lnum *aux;
+      lnum *nue=(lnum*) malloc(sizeof(lnum));
 
       
       nue->num=n_num;
@@ -38,46 +38,46 @@ void load_data(struct list_num *data1,int n_num){
 
       
       //test the state of de later node of the list
-      if(data1==NULL){
+      if(*data1==NULL){
 
-			data1=nue;
+			*data1=nue;
  
       }else{
 
-            aux=data1;
+            aux=*data1;
             while (aux->sig!=NULL) {
 
                   aux=aux->sig;
 		  
             }
-            aux-sig=nue;
+            aux->sig=nue;
       }
 
 }
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(struct list_num *data1,int pstn){
+int return_number_of_the_list(lnum *data1,int pstn){
 	
-	cont=0;
-	struct list_num *aux;
+      int cont=0;
+      lnum *aux;
 	
-	aux=*data1;
+      aux=*data1;
 	
 
-	do{
+      do{
 		
-          if(cont==pstn){
-				  
-                return aux->num;
+	    if(cont==pstn){
+		
+		  return aux->num;
 			
-          }else{
+	    }else{
 			
-                aux=aux->*sig
+		  aux=aux->*sig;
 
-          }
-		
+	    }
+	    
           cont++;
-	}while(cont!=pstn);
+      }while(cont!=pstn);
 	
 	
 }

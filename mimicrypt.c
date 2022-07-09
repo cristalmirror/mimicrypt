@@ -12,7 +12,7 @@
 
 
 //create a aleatory numbers for each letter in the text
-int rand_num(time x_n);
+int rand_num(time_t x_n);
 
 //creat a encrypt  archive
 void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i);
@@ -21,8 +21,8 @@ void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i);
 int main(int argc,char *argv[]){
       //defines of constants an variable
       int res,cont=0;
-      time date=time(NULL),aux_date;
-      FILE *d_text= NULL,encrypt_archive=NULL;
+      time_t date=time(NULL),aux_date;
+      FILE *d_text= NULL,*encrypt_archive=NULL;
       
 
       create_list(&data_e);
@@ -37,7 +37,7 @@ int main(int argc,char *argv[]){
       encrypt_archive=fopen("new encrypt archive","a");
 
       //create the algorithm that will generete the aleatory numbers
-      while(_CONSTANT==feof(tam)){
+      while(_CONSTANT==feof(*argv)){
 
             //create a aleatory numbers for each letter in the text
             res=rand_num(date,d_text);
@@ -57,7 +57,7 @@ int main(int argc,char *argv[]){
 }
 
 //create a aleatory numbers for each letter in the text
-int rand_num(time x_n){
+int rand_num(time_t x_n){
       long int a=31415926535,c=27182818284,m=1414213562373;
       int result,cont=0;
       bool opc=true;
