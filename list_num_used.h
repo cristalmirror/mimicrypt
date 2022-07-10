@@ -12,25 +12,25 @@ typedef struct list_num{
 typedef data_e *lnum;
 
 //creation of the list of numbers
-void create_list(lnum *data1);
+void create_list(lnum **data1);
 
 //load numbers that the RGN
-void load_data(lnum *data1,int n_num);
+void load_data(lnum **data1,int n_num);
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(lnum *data1,int pstn);
+int return_number_of_the_list(lnum **data1,int pstn);
 
 //creation of the list of numbers
-void create_list(lnum *data1){
+void create_list(lnum **data1){
 
       *data1=NULL;
       
 }
 
 //load numbers that the RGN
-void load_data(lnum *data1,int n_num){
-      lnum *aux;
-      lnum *nue=(lnum*) malloc(sizeof(lnum));
+void load_data(lnum **data1,int n_num){
+      lnum aux;
+      lnum nue=malloc(sizeof(lnum));
 
       
       nue->num=n_num;
@@ -40,11 +40,11 @@ void load_data(lnum *data1,int n_num){
       //test the state of de later node of the list
       if(*data1==NULL){
 
-			*data1=nue;
+			**data1=nue;
  
       }else{
 
-            aux=*data1;
+            aux=**data1;
             while (aux->sig!=NULL) {
 
                   aux=aux->sig;
@@ -56,12 +56,12 @@ void load_data(lnum *data1,int n_num){
 }
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(lnum *data1,int pstn){
+int return_number_of_the_list(lnum **data1,int pstn){
 	
       int cont=0;
-      lnum *aux;
+      lnum aux;
 	
-      aux=*data1;
+      aux=**data1;
 	
 
       do{
@@ -72,7 +72,7 @@ int return_number_of_the_list(lnum *data1,int pstn){
 			
 	    }else{
 			
-		  aux=aux->*sig;
+		  aux=aux->sig;
 
 	    }
 	    

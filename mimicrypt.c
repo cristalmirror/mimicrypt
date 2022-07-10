@@ -43,7 +43,7 @@ int main(int argc,char *argv[]){
             res=rand_num(date,d_text);
 
             //encrypting for character
-            encrypt_operation(d_text,&encrypt_archive,res);
+            encrypt_operation(&d_text,&encrypt_archive,res);
 
             cont++;
        }
@@ -99,7 +99,7 @@ int rand_num(time_t x_n){
 
 
 //encrypt de archive 
-void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i){
+void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i){
       char aux,aux2;
       imt aux_i;
       
