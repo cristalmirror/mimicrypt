@@ -10,9 +10,10 @@
 
 #define _CONSTANT 1
 
+lnum data_e1;
 
 //create a aleatory numbers for each letter in the text
-int rand_num(time x_n);
+int rand_num(time_t x_n);
 
 //creat a encrypt  archive
 void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i);
@@ -21,11 +22,11 @@ void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i);
 int main(int argc,char *argv[]){
       //defines of constants an variable
       int res,cont=0;
-      time date=time(NULL),aux_date;
-      FILE *d_text= NULL,encrypt_archive=NULL;
+      time_t date=time(NULL),aux_date;
+      FILE *d_text= NULL,*encrypt_archive=NULL;
       
 
-      create_list(&data_e);
+      create_list(&data_e1);
 
       //save the public key based in the time
       date=aux_date;
@@ -37,13 +38,13 @@ int main(int argc,char *argv[]){
       encrypt_archive=fopen("new encrypt archive","a");
 
       //create the algorithm that will generete the aleatory numbers
-      while(_CONSTANT==feof(tam)){
+      while(_CONSTANT==feof(*argv)){
 
             //create a aleatory numbers for each letter in the text
             res=rand_num(date,d_text);
 
             //encrypting for character
-            encrypt_operation(d_text,&encrypt_archive,res);
+            encrypt_operation(&d_text,&encrypt_archive,res);
 
             cont++;
        }
@@ -57,7 +58,7 @@ int main(int argc,char *argv[]){
 }
 
 //create a aleatory numbers for each letter in the text
-int rand_num(time x_n){
+int rand_num(time_t x_n){
       long int a=31415926535,c=27182818284,m=1414213562373;
       int result,cont=0;
       bool opc=true;
@@ -72,11 +73,11 @@ int rand_num(time x_n){
             return_number_of_the_list(&data_e,cont);
 
 	    //test that are in range ASCII
-            if((result<=255)&&(result>-1)&&(result!=data_e->num)){
+            if((result<=255)&&(result>-1)&&(result!=data_e1.num)){
 
                   opc=false;
                   
-                  load_data(&data_e,result);
+                  load_data(&data_e1,result);
               
                   return result;
 
@@ -87,7 +88,7 @@ int rand_num(time x_n){
             }
 	    
 	    //if RNG create two identical numbers, change x_n in the RNG 
-            if(result==data_e->num){
+            if(result==data_e1.num){
 
                   x_n++;
 
@@ -101,7 +102,7 @@ int rand_num(time x_n){
 //encrypt de archive 
 void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i){
       char aux,aux2;
-      imt aux_i;
+      int aux_i;
       
       //save th character in aux
       fscanf(archive_inp,"%c",&aux);
