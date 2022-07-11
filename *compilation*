@@ -1,14 +1,14 @@
 -*- mode: compilation; default-directory: "~/mimicrypt/" -*-
-Compilation started at Mon Jul 11 09:30:37
+Compilation started at Mon Jul 11 09:31:27
 
 gcc mimicrypt.c
 mimicrypt.c: In function ‘rand_num’:
-mimicrypt.c:75:60: error: request for member ‘num’ in something not a structure or union
-   75 |             if((result<=255)&&(result>-1)&&(result!=data_e1.num)){
-      |                                                            ^
-mimicrypt.c:90:31: error: request for member ‘num’ in something not a structure or union
-   90 |             if(result==data_e1.num){
-      |                               ^
+mimicrypt.c:75:61: error: request for member ‘num’ in something not a structure or union
+   75 |             if((result<=255)&&(result>-1)&&(result!=&data_e1.num)){
+      |                                                             ^
+mimicrypt.c:90:32: error: request for member ‘num’ in something not a structure or union
+   90 |             if(result==&data_e1.num){
+      |                                ^
 mimicrypt.c: In function ‘encrypt_operation’:
 mimicrypt.c:107:14: warning: passing argument 1 of ‘fscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
   107 |       fscanf(archive_inp,"%c",&aux);
@@ -29,4 +29,4 @@ In file included from mimicrypt.c:3:
   326 | extern int fprintf (FILE *__restrict __stream,
       |                     ~~~~~~~~~~~~~~~~~^~~~~~~~
 
-Compilation exited abnormally with code 1 at Mon Jul 11 09:30:37
+Compilation exited abnormally with code 1 at Mon Jul 11 09:31:27
