@@ -18,12 +18,12 @@ void create_list(lnum **data1);
 void load_data(lnum **data1,int n_num);
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(lnum **data1,int pstn);
+void return_number_of_the_list(lnum **data1,int pstn);
 
 //creation of the list of numbers
 void create_list(lnum **data1){
 
-      *data1=NULL;
+      **data1=NULL;
       
 }
 
@@ -56,7 +56,7 @@ void load_data(lnum **data1,int n_num){
 }
 
 //return the num that correspond to the position in the test
-int return_number_of_the_list(lnum **data1,int pstn){
+void return_number_of_the_list(lnum **data1,int pstn){
 	
       int cont=0;
       lnum aux;
@@ -66,19 +66,18 @@ int return_number_of_the_list(lnum **data1,int pstn){
 
       do{
 		
-	    if(cont==pstn){
+            if(cont==pstn){
 		
-		  return aux->num;
+                  **data1=aux;
 			
-	    }else{
-			
-		  aux=aux->sig;
+            }else{
+                  
+                  aux=aux->sig;
 
-	    }
+            }
 	    
-          cont++;
+            cont++;
       }while(cont!=pstn);
-	
 	
 }
 
