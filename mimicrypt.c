@@ -16,7 +16,7 @@ lnum *data_e1;
 int rand_num(time_t x_n);
 
 //creat a encrypt  archive
-void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i);
+void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i,int j);
 
 //main program
 int main(int argc,char *argv[]){
@@ -31,7 +31,7 @@ int main(int argc,char *argv[]){
       date=aux_date;
 
       //open the archive that was introduced in terminal
-      d_text=fopen(*argv,"a");
+      d_text=fopen(*argv,"r");
 
       //open new archive
       encrypt_archive=fopen("new encrypt archive","a");
@@ -43,7 +43,7 @@ int main(int argc,char *argv[]){
             res=rand_num(date);
 
             //encrypting for character
-            encrypt_operation(&d_text,&encrypt_archive,res);
+            encrypt_operation(&d_text,&encrypt_archive,res,cont);
 
             cont++;
        }
@@ -71,7 +71,7 @@ int rand_num(time_t x_n){
 
             return_number_of_the_list(&data_e1,cont);
 
-	    //test that are in range ASCII
+            //test that are in range ASCII
             if((result<=255)&&(result>-1)&&(result!=&data_e1.num)){
 
                   opc=false;
@@ -99,15 +99,13 @@ int rand_num(time_t x_n){
 
 
 //encrypt de archive 
-void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i){
+void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i,int j){
       char aux,aux2;
       int aux_i;
       
-      //save th character in aux
-      fscanf(archive_inp,"%c",&aux);
-
-      //transform the char to int the charater of de archive
-      aux_i=(int)aux;
+      //save the character in aux_i
+      fseek(&archive_inp,j,SEEK_SET);
+      aux_i=fgetc(&archive_inp);
 
       //move to other in char ASCII with RNG result
       i=i+aux_i;
