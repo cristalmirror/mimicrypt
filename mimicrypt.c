@@ -1,4 +1,3 @@
-
 /*headers that be necesary to make the program*/
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,13 +9,13 @@
 
 #define _CONSTANT 1
 
-lnum *data_e1;
+
 
 //create a aleatory numbers for each letter in the text
 int rand_num(time_t x_n);
 
 //creat a encrypt  archive
-void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i,int j);
+void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j);
 
 //main program
 int main(int argc,char *argv[]){
@@ -69,14 +68,20 @@ int rand_num(time_t x_n){
 
             result=result/10000000;
 
-            return_number_of_the_list(&data_e1,cont);
+            struct list_num aux;
+            aux.num=cont;
+            
+            return_number_of_the_list(&data_e1,aux);
 
             //test that are in range ASCII
-            if((result<=255)&&(result>-1)&&(result!=&data_e1.num)){
+            if((result<=255)&&(result>-1)&&(result!=setnum.num)){
 
                   opc=false;
+
+                  struct list_num aux2;
+                  aux2.num=result;
                   
-                  load_data(&data_e1,result);
+                  load_data(&data_e1,aux2);
               
                   return result;
 
@@ -87,7 +92,7 @@ int rand_num(time_t x_n){
             }
 	    
 	    //if RNG create two identical numbers, change x_n in the RNG 
-            if(result==&data_e1.num){
+            if(result==setnum.num){
 
                   x_n++;
 
@@ -99,7 +104,7 @@ int rand_num(time_t x_n){
 
 
 //encrypt de archive 
-void encrypt_operation(FILE **archive_inp,FILE **archive_otp,int i,int j){
+void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j){
       char aux,aux2;
       int aux_i;
       

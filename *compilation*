@@ -1,32 +1,42 @@
 -*- mode: compilation; default-directory: "~/mimicrypt/" -*-
-Compilation started at Mon Jul 11 09:31:27
+Compilation started at Sat Jul 16 20:32:58
 
 gcc mimicrypt.c
-mimicrypt.c: In function ‘rand_num’:
-mimicrypt.c:75:61: error: request for member ‘num’ in something not a structure or union
-   75 |             if((result<=255)&&(result>-1)&&(result!=&data_e1.num)){
-      |                                                             ^
-mimicrypt.c:90:32: error: request for member ‘num’ in something not a structure or union
-   90 |             if(result==&data_e1.num){
-      |                                ^
+mimicrypt.c: In function ‘main’:
+mimicrypt.c:45:31: warning: passing argument 1 of ‘encrypt_operation’ from incompatible pointer type [-Wincompatible-pointer-types]
+   45 |             encrypt_operation(&d_text,&encrypt_archive,res,cont);
+      |                               ^~~~~~~
+      |                               |
+      |                               FILE **
+mimicrypt.c:18:30: note: expected ‘FILE *’ but argument is of type ‘FILE **’
+   18 | void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j);
+      |                        ~~~~~~^~~~~~~~~~~
+mimicrypt.c:45:39: warning: passing argument 2 of ‘encrypt_operation’ from incompatible pointer type [-Wincompatible-pointer-types]
+   45 |             encrypt_operation(&d_text,&encrypt_archive,res,cont);
+      |                                       ^~~~~~~~~~~~~~~~
+      |                                       |
+      |                                       FILE **
+mimicrypt.c:18:48: note: expected ‘FILE *’ but argument is of type ‘FILE **’
+   18 | void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j);
+      |                                          ~~~~~~^~~~~~~~~~~
 mimicrypt.c: In function ‘encrypt_operation’:
-mimicrypt.c:107:14: warning: passing argument 1 of ‘fscanf’ from incompatible pointer type [-Wincompatible-pointer-types]
-  107 |       fscanf(archive_inp,"%c",&aux);
-      |              ^~~~~~~~~~~
-      |              |
-      |              FILE **
-In file included from mimicrypt.c:3:
-/usr/include/stdio.h:391:37: note: expected ‘FILE * restrict’ but argument is of type ‘FILE **’
-  391 | extern int fscanf (FILE *__restrict __stream,
-      |                    ~~~~~~~~~~~~~~~~~^~~~~~~~
-mimicrypt.c:126:15: warning: passing argument 1 of ‘fprintf’ from incompatible pointer type [-Wincompatible-pointer-types]
-  126 |       fprintf(archive_otp,"%c",aux2);
-      |               ^~~~~~~~~~~
-      |               |
-      |               FILE **
-In file included from mimicrypt.c:3:
-/usr/include/stdio.h:326:38: note: expected ‘FILE * restrict’ but argument is of type ‘FILE **’
-  326 | extern int fprintf (FILE *__restrict __stream,
-      |                     ~~~~~~~~~~~~~~~~~^~~~~~~~
+mimicrypt.c:112:13: warning: passing argument 1 of ‘fseek’ from incompatible pointer type [-Wincompatible-pointer-types]
+  112 |       fseek(&archive_inp,j,SEEK_SET);
+      |             ^~~~~~~~~~~~
+      |             |
+      |             FILE **
+In file included from mimicrypt.c:2:
+/usr/include/stdio.h:689:25: note: expected ‘FILE *’ but argument is of type ‘FILE **’
+  689 | extern int fseek (FILE *__stream, long int __off, int __whence);
+      |                   ~~~~~~^~~~~~~~
+mimicrypt.c:113:19: warning: passing argument 1 of ‘fgetc’ from incompatible pointer type [-Wincompatible-pointer-types]
+  113 |       aux_i=fgetc(&archive_inp);
+      |                   ^~~~~~~~~~~~
+      |                   |
+      |                   FILE **
+In file included from mimicrypt.c:2:
+/usr/include/stdio.h:489:25: note: expected ‘FILE *’ but argument is of type ‘FILE **’
+  489 | extern int fgetc (FILE *__stream);
+      |                   ~~~~~~^~~~~~~~
 
-Compilation exited abnormally with code 1 at Mon Jul 11 09:31:27
+Compilation finished at Sat Jul 16 20:32:58

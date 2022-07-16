@@ -2,49 +2,54 @@
 #include<stdlib.h>
 
 //register that contend the numbers created of rand funcion
-typedef struct list_num{
+struct list_num{
 
       int num;
-      struct list_num *sig;
       
-}data_e;
+};
 
-typedef data_e *lnum;
+struct lnum{
+
+      struct list_num data_e;
+      struct lnum *sig;
+};
+
+struct list_num setnum;
+struct lnum *data_e1;
 
 //creation of the list of numbers
-void create_list(lnum **data1);
+void create_list(struct lnum **data1);
 
 //load numbers that the RGN
-void load_data(lnum **data1,int n_num);
+void load_data(struct lnum **data1,struct list_num pstn);
 
 //return the num that correspond to the position in the test
-void return_number_of_the_list(lnum **data1,int pstn);
+void return_number_of_the_list(struct lnum **data1,struct list_num pstn);
 
 //creation of the list of numbers
-void create_list(lnum **data1){
+void create_list(struct lnum **data1){
 
-      **data1=NULL;
+      *data1=NULL;
       
 }
 
 //load numbers that the RGN
-void load_data(lnum **data1,int n_num){
-      lnum aux;
-      lnum nue=malloc(sizeof(lnum));
-
+void load_data(struct lnum **data1,struct list_num pstn){
+      struct lnum *aux;
+      struct lnum *nue=(struct lnum *)malloc(sizeof(struct lnum));
       
-      nue->num=n_num;
+      nue->data_e=pstn;
       nue->sig=NULL;
 
       
       //test the state of de later node of the list
       if(*data1==NULL){
-
-			**data1=nue;
+            
+			*data1=nue;
  
       }else{
 
-            aux=**data1;
+            aux=*data1;
             while (aux->sig!=NULL) {
 
                   aux=aux->sig;
@@ -56,19 +61,19 @@ void load_data(lnum **data1,int n_num){
 }
 
 //return the num that correspond to the position in the test
-void return_number_of_the_list(lnum **data1,int pstn){
+void return_number_of_the_list(struct lnum **data1,struct list_num pstn){
 	
       int cont=0;
-      lnum aux;
+      struct lnum *aux;
 	
-      aux=**data1;
+      aux=*data1;
 	
 
       do{
 		
-            if(cont==pstn){
+            if(cont==pstn.num){
 		
-                  **data1=aux;
+                  *data1=aux;
 			
             }else{
                   
@@ -77,7 +82,7 @@ void return_number_of_the_list(lnum **data1,int pstn){
             }
 	    
             cont++;
-      }while(cont!=pstn);
+      }while(cont!=pstn.num);
 	
 }
 
