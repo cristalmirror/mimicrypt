@@ -15,7 +15,7 @@
 int rand_num(time_t x_n);
 
 //creat a encrypt  archive
-void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j);
+void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j);
 
 //main program
 int main(int argc,char *argv[]){
@@ -42,7 +42,7 @@ int main(int argc,char *argv[]){
             res=rand_num(date);
 
             //encrypting for character
-            encrypt_operation(&d_text,&encrypt_archive,res,cont);
+            encrypt_operation(d_text,&encrypt_archive,res,cont);
 
             cont++;
        }
@@ -104,13 +104,13 @@ int rand_num(time_t x_n){
 
 
 //encrypt de archive 
-void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j){
+void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j){
       char aux,aux2;
       int aux_i;
       
       //save the character in aux_i
-      fseek(&archive_inp,j,SEEK_SET);
-      aux_i=fgetc(&archive_inp);
+      fseek(archive_inp,j,SEEK_SET);
+      aux_i=fgetc(archive_inp);
 
       //move to other in char ASCII with RNG result
       i=i+aux_i;
@@ -123,10 +123,10 @@ void encrypt_operation(FILE *archive_inp,FILE *archive_otp,int i,int j){
       }
 
       //creation of the char encryptation
-      aux2=(char)i;
+      
 
       //put char in the encrypt new archive
-      fprintf(archive_otp,"%c",aux2);
+      fputc(i,*archive_otp);
 
       
            
