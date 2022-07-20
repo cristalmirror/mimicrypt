@@ -17,12 +17,16 @@ int rand_num(time_t x_n);
 //creat a encrypt  archive
 void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j);
 
+//decrypt funtion of the system
+void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j);
+
 //main program
 int main(int argc,char *argv[]){
       //defines of constants an variable
       int res,cont=0;
       time_t date=time(NULL),aux_date;
       FILE *d_text= NULL,*encrypt_archive=NULL;
+      char opcopr;
 
       create_list(&data_e1);
 
@@ -35,18 +39,51 @@ int main(int argc,char *argv[]){
       //open new archive
       encrypt_archive=fopen("new encrypt archive","a");
 
-      //create the algorithm that will generete the aleatory numbers
-      while(_CONSTANT==feof(d_text)){
+      //select opration to archive
+      printf("select the opration to realice \n(1)encrypt\n(2)decrypt\n>>> ");
 
-            //create a aleatory numbers for each letter in the text
-            res=rand_num(date);
+      opcopr=getchar();
 
-            //encrypting for character
-            encrypt_operation(d_text,&encrypt_archive,res,cont);
+      switch (opcopr) {
 
-            cont++;
-       }
+      case '1'://option to encrypt
+	    
+	    
+	    //create the algorithm that will generete the aleatory numbers
+	    while(_CONSTANT==feof(d_text)){
 
+		  //create a aleatory numbers for each letter in the text
+		  res=rand_num(date);
+
+		  //encrypting for character
+		  encrypt_operation(d_text,&encrypt_archive,res,cont);
+
+		  cont++;
+	    }
+	    break;
+	    
+      case '2'://option to decrypt
+
+	    //decrypt character in the text
+	    while(_CONSTANT==feof(d_text)){
+
+		  //create a aleatory numbers for each letter in the text
+		  res=rand_num(date);
+
+		  //encrypting for character
+		  decrypt_operation(d_text,&encrypt_archive,res,cont);
+
+		  cont++;
+	    }
+	    
+	    break;
+      default:
+
+	    printf("***ERROR: operation isn't valid***\n");
+	    
+	    break;
+	    
+      }
       fclose(d_text);
       fclose(encrypt_archive);
 
@@ -130,4 +167,9 @@ void encrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j){
 
       
            
+}
+
+
+void decrypt_operation(FILE *archive_inp,FILE **archive_otp,int i,int j){
+
 }
