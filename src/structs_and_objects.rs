@@ -1,6 +1,8 @@
 
-use rand::Rng;
+use rand::{SeedableRng,Rng};
 use std::fs::File;
+use std::os::unix::fs::MetadataExt;
+use std::io;
 
 //** struct of the object that encrypt archive **
 
@@ -44,8 +46,23 @@ impl Encript{
     //encrypt of archive
     fn ecrypt_archive_system(&self, arg_opc: String) {
 
-
+	//open the archive to encrypt
 	let mut encrypt_archive = File::open(arg_opc)?;
+
+	//create object to brows metadata
+	let objet_metafs = fs::metadata(arg_opc);
+
+	//generate the positions of character of archive to encrypt
+	let pos_to_crypt: Vec<i32> = Vec::new();
+
+	let i: i32 = 0;
+
+	//generate the map to encrypt
+	while 0 < objet_metafs.size() {
+
+	    
+	    
+	}
 	
     }
 	

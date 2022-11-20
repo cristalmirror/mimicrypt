@@ -1,3 +1,29 @@
+use std::{io,env,cmp::PartialEq,fs::File};
+
+
+
+//printing the menu option
+fn menu_of_system(){
+    println!("[ *** MENU OF OPCTIONS IN MIMICRYPT *** ]\n\n");
+    println!("[GENERAL OPTIONS]\n");
+    println!("[ENCRYPTATION] = -ec");
+    println!("[DECRYPTATION] = -dc");
+    println!("[HELP]         = -h");
+    
+
+}
+
+//main function 
 fn main() {
-    println!("Hello, world!");
+    let args: Vec<String> = env::args().collect();
+
+    //
+    if PartialEq::eq("-h",&args[1]) {
+
+	menu_of_system();
+	
+    }
+    
+    println!("\n[TAMINIO]: {:?} \n[ARGUMENTOS]: {:?}",args.len(),&args[1..]);
+    
 }
