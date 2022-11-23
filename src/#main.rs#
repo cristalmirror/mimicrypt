@@ -1,5 +1,5 @@
 use std::{io,env,cmp::PartialEq,fs::File};
-
+mod 
 
 
 //printing the menu option
@@ -20,13 +20,12 @@ fn main() {
     //
     if PartialEq::eq("-h",&args[1]) {
 
-	//menu option
-
 	menu_of_system();
 	
-    }else if PartialEq::eq("-ec",&args[1]) {
+    } else if PartialEq::eq("-ec",&args[1]) {
 
-	//encriptation option
+	encrypt_archive_system(&args[2]);
+
 	
 	
     }

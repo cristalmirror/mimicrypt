@@ -22,9 +22,9 @@ fn main() {
 
 	menu_of_system();
 	
-    } else if PartialEq::eq("-ec",args[1]) {
+    } else if PartialEq::eq("-ec",&args[1]) {
 
-	encrypt_archive_system(args[2]);
+	encrypt_archive_system(&args[2]);
 
 	
 	
